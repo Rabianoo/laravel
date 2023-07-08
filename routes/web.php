@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\http\controllers\Registercontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get ('index',[Registercontroller::class,'index']);
 
-Route::get('index/',function(){
-    return view('index');
-});
-Route::get('About/{name?}' , function($name = null){
-    $abc = compact('name');
-    return view('About')->with($abc);
-});
+Route::get ('About',[Registercontroller::class,'About']);
+Route::get ('welcome',[Registercontroller::class,'welcome']);
+
+
+Route::get('form',[Registercontroller::class,'Register']);
+Route::post('form',[Registercontroller::class,'reg_data']);
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::get('index/',function(){
+//     return view('index');
+// });
+// Route::get('About/{name?}' , function($name = null){
+//     $abc = compact('name');
+//     return view('About')->with($abc);
+// });
