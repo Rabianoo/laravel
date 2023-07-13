@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Human;
+
 use Illuminate\Http\Request;
+
+
 
 class Registercontroller extends Controller
 {
@@ -27,5 +31,13 @@ class Registercontroller extends Controller
           "pass" => "required"
     ]);
     print_r ($request->all());
-    }
+    
+     $Myhuman = new Human();
+      $Myhuman->name = $request->name;
+       $Myhuman->email = $request->email;
+        $Myhuman->pass = $request->pass;
+   
+
+        $Myhuman->save();
+}
 }
